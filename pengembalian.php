@@ -8,7 +8,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="meminjam.css">
   <style>
     body {
       background-image: url('img/bg2.jpeg');
@@ -38,15 +37,14 @@
               </div>
               <button type="button" class="btn btn-danger float-right" onclick="logout()">Logout</button>
               <button type="button" class="btn btn-primary float-right" id="tambahBaris">Tambah Data</button>
-              <button type="button" class="btn btn-success float-right" onclick="pengembalian()">Mengembalikan</button>
+              <button type="button" class="btn btn-success float-right" onclick="pengembalian()">Meminjam</button>
               <table class="table" id="tabelData">
                 <thead>
                   <tr>
-                    <th>Tgl & waktu Peminjaman</th>
+                    <th>Tgl & waktu Pengembalian</th>
                     <th>Kelas</th>
                     <th>Nama Siswa</th>
-                    <th>Alat Yang Dipinjam</th>
-                    <th>Foto Alat</th>
+                    <th>Alat Yang Dikembalikan</th>
                     <th>Keterangan</th>
                     <th>Aksi</th>
                   </tr>
@@ -54,10 +52,10 @@
                 <tbody id="tabelBody">
                   <tr>
                     <td>
-                      <input type="datetime-local" class="form-control" id="birthdaytime" name="tgl/jam" required >
+                      <input type="datetime-local" class="form-control" id="birthdaytime" name="tgl/jam" required>
                     </td>
                     <td>
-                      <select class="form-control pilihan" name="kelas" required >
+                      <select class="form-control pilihan" name="kelas" required>
                         <option value="">Pilih Kelas</option>
                         <option value="XI RPL">XI RPL</option>
                         <option value="XI MM">XI MM</option>
@@ -66,7 +64,7 @@
                       </select>
                     </td>
                     <td>
-                      <input type="text" name="nama" class="form-control" placeholder="Nama Siswa" autocomplete="off" required  >
+                      <input type="text" name="nama" class="form-control" placeholder="Nama Siswa" autocomplete="off" required>
                     </td>
                     <!-- <td>
                               <select class="form-control pilihan" name="alat">
@@ -77,9 +75,9 @@
                                 <option value="mouse">mouse</option>
                               </select>
                             </td> -->
-                    <td>
+                            <td>
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="mouse" name="alat" id="flexCheckDefault" >
+                        <input class="form-check-input" type="checkbox" value="mouse" name="alat" id="flexCheckDefault" required >
                         <label class="form-check-label" for="flexCheckDefault" >
                           mouse
                         </label>
@@ -122,13 +120,13 @@
                       </div>
                     </td>
                     <td>
-                      <input id="input" type="file" name="foto_alat" value="image" >
+                      <input id="input" type="file" name="foto_alat">
                     </td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check" name="status" value="Belum dikembalikan" id="btncheck1"
+                        <input type="checkbox" class="btn-check" name="status" value="sudah dikembalikan" id="btncheck1"
                           autocomplete="off" checked>
-                        <label class="btn btn-outline-primary" for="btncheck1">Meminjam</label>
+                        <label class="btn btn-outline-primary" for="btncheck1">Mengembalikan</label>
                       </div>
                     </td>
                     <td>
@@ -193,25 +191,11 @@
   </script>
   <script>
     function pengembalian() {
-      console.log("Berhasil ke halaman pengembalian");
-      window.location.href = "pengembalian.php";
-      history.pushState(null, null, "pengembalian.php");
+      console.log("Berhasil ke halaman peminjaman");
+      window.location.href = "dashboard.php";
+      history.pushState(null, null, "dashboard.php");
     }
   </script>
-
-<script>
-  let img = document.getElementById('img');
-  let input =document.getElementById('input');
-
-  input.onchange = (e) => {
-    if (input.files[0])
-    img.src = URL.createObjectURL(input.files[0]);
-  };
-</script>
-
-
-
-
 
   <script>
     document.getElementById('tambahBaris').addEventListener('click', function () {
@@ -278,13 +262,13 @@
                       </div>
                     </td>
                     <td>
-                      <input id="input" type="file">
+                      <input id="input" type="file" name="foto_alat">
                     </td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                         <input type="checkbox" class="btn-check" name="status" value="Meminjam" id="btncheck1"
                           autocomplete="off" checked>
-                        <label class="btn btn-outline-primary" for="btncheck1">Meminjam</label>
+                        <label class="btn btn-outline-primary" for="btncheck1">Mengembalikan</label>
                       </div>
                     </td>
         </td>

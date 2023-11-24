@@ -1,100 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Area</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  </head>
-  <body style="background-color:black;">
-    <div class="container">
-        <div class="row d-flex align-items-center justify-content-center" style="height: 100vh; width:100%">
-            <div class="col-md-6">
-                <div class="card border-0 shadow rounded">
-                    <div class="card-body">
-                        <div   div class="row">
-                            <form action="actionLogin.php" method="post" id="loginForm">
-                                <div class="card-header mb-3">
-                                    <strong>Login</strong>
-                                </div>
-                                <input 
-                                    class="form-control"
-                                    type="text"
-                                    name="username"
-                                    placeholder="Username"
-                                    autofocus
-                                    autocomplete="off">
-                                <input 
-                                    class="form-control mt-3"
-                                    type="password"
-                                    name="password"
-                                    placeholder="Password"
-                                    autocomplete="off">
-                                <button type="submit" class="btn btn-primary mt-3"><i class="bi bi-box-arrow-in-right"></i> Login</button>
-                                <a href="#" class="btn btn-outline-secondary mt-3" onclick="switchForms('registerForm')">Register</a>
-                            </form>
-                        <form action="registrasi.php" method="post" id="registerForm" style="display: none;">
-                            <div class="card-header mb-3">
-                                <strong>Registrasi Akun Baru</strong>
-                            </div>
-                            <input 
-                                class="form-control"
-                                type="text"
-                                id="regUsername"
-                                name="reg_username"
-                                placeholder="Username register"
-                                autofocus
-                                autocomplete="off">
-                            <input 
-                                class="form-control mt-3"
-                                type="password"
-                                id="regPassword"
-                                name="reg_password"
-                                placeholder="Password register"
-                                autofocus
-                                autocomplete="off">
-                            <button type="submit" class="btn btn-primary mt-3" onclick="showAlert()">Register</button>
-                            <a href="#" class="btn btn-outline-danger mt-3" onclick="switchForms('loginForm')">Cancel</a>
-                        </form>
-                        </div>
-                    </div>
-                  </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        function switchForms() {
-            var loginForm = document.getElementById("loginForm");
-            var registerForm = document.getElementById("registerForm");
-
-            if (loginForm.style.display === "none") {
-                loginForm.style.display = "block";
-                registerForm.style.display = "none";
-            } else {
-                loginForm.style.display = "none";
-                registerForm.style.display = "block";
-            }
-        }
-    </script>
-    <script>
-        function showAlert(){
-            swal.fire({
-                title: 'Registrasi Berhasil',
-                text: 'Anda telah berhasil mendaftar',
-                icon: 'success',
-                confirmButtonText: 'Ok',
-            }).then((result) => {
-               if(result.isConfirmed){
-                window.location.href = 'index.php';
-               }     
-            }).finally(() => {
-                switchForms('#loginForm');
-            });
-        }
-    </script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webleb</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display:flex; align-items:center; justify-content:center;">
+<div class="login-page">
+  <div class="form">
+    <form class="register-form" method="post" action="registrasi.php" id="registerForm">
+      <h2><i class="fas fa-lock"></i> Register</h2>
+      <input type="text" placeholder="Username *" name="reg_username" id="regUsername" required/>
+      <input type="password" placeholder="Password *" name="reg_password" id="regPassword" required/>
+      <button type="submit" class="btn btn-primary mt-3" onclick="showAlert()">Register</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form>
+    <form class="login-form" method="post" action="actionLogin.php" id="loginForm" >
+      <h2><i class="fas fa-lock"></i> Login</h2>
+      <input type="text" placeholder="Username"   name="username"    required />
+      <input type="password" placeholder="Password" name="password"  required/>
+<button type="submit" class="btn btn-primary mt-3"><i class="bi bi-box-arrow-in-right"></i> Login</button>
+      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    </form>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+</body>
 </html>
